@@ -1,5 +1,5 @@
 
-###### What ports are open?
+#### What ports are open?
 
 | Condition | Action |
 |---|---|
@@ -8,7 +8,7 @@
 | HTTP open (80/8080) | Check robots.txt, page source, headers, fuzz dirs tools: `gobuster`, `dirb`, `feroxbuster` ·|
 | SMB / unusual ports | `nmap -p 445 --script smb-enum-shares $IP` ·|
 
-###### Web app found what's running?
+#### Web app found what's running?
 
 | Condition | Action |
 |---|---|
