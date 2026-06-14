@@ -62,5 +62,5 @@ I built this checklist from real experience solving TryHackMe machines. Every it
 ---
 
 <p align="center">
-  Made with ❤️ by <a href="https://tryhackme.com/p/Loaymorad">Loay Morad</a> • Keep hacking, keep learning 🔐
+  Made with ❤️ by <a href="https://tryhackme.com/p/Loaymorad">Loay Morad</a> • Keep hacking, keep learning
 </p>
