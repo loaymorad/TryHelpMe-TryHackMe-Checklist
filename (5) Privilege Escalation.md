@@ -64,4 +64,5 @@
 | Firefox saved creds | Copy .firefox profile to attacker, open in Firefox Lockwise ·|
 | grep logs / files | `grep -iR username /home /var/log 2>/dev/null` ·|
 | password.txt in home | After lateral move, always `ls` the new user's home ·|
-
+| Check /opt/ for creds | /opt/ is a common place for leftover config and note files with plaintext credentials — always check it `ls /opt/ && cat /opt/*.txt` |
+| Internal service note files | After getting a user shell, check home dir for .txt files pointing to internal services (Docker, Jenkins, DBs) `ls -a ~/ && cat ~/*.txt` |
