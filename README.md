@@ -10,7 +10,7 @@
 
 ## About
 
-When I started solving TryHackMe machines, I kept forgetting steps, going in circles, or missing obvious things. So I built this checklist — a living document I update every time I solve a machine and discover a new trick or approach worth remembering.
+When I started solving TryHackMe machines, I kept forgetting steps, going in circles, or missing obvious things. So I built this checklist a living document I update every time I solve a machine and discover a new trick or approach worth remembering.
 
 This is not a room list or a writeup collection. It's a **step-by-step methodology** to make sure you never skip a critical phase when attacking a machine.
 
@@ -37,9 +37,9 @@ The checklist is divided into 6 phases that mirror a real penetration testing wo
 
 1. **Start a machine** on TryHackMe.
 2. **Open the relevant phase** from the list above.
-3. **Work through the checklist top to bottom** — don't skip steps just because something "seems unlikely."
+3. **Work through the checklist top to bottom** don't skip steps just because something "seems unlikely."
 4. **Got stuck?** Check the next phase; sometimes you already have enough to move forward.
-5. **Finished a machine?** Come back and see if a technique you used is missing from the list — feel free to open an issue!
+5. **Finished a machine?** Come back and see if a technique you used is missing from the list feel free to open an issue!
 
 ---
 
@@ -53,7 +53,7 @@ The checklist is divided into 6 phases that mirror a real penetration testing wo
 
 ## About Me
 
-Hi, I'm **Loay Morad** — a 3rd-year Computer Science student and junior penetration tester.
+Hi, I'm **Loay Morad** a 3rd-year Computer Science student and junior penetration tester.
 
 I built this checklist from real experience solving TryHackMe machines. Every item in here comes from a machine I actually got stuck on, or a technique that helped me break through.
 
