@@ -28,8 +28,11 @@ The checklist is divided into 6 phases that mirror a real penetration testing wo
 | 2 | [Web Exploitation](./(2)%20Web%20Exploitation.md) | SQLi, XSS, LFI/RFI, IDOR, upload bypasses, common web vulnerabilities |
 | 3 | [Credentials & Cracking](./(3)%20Credentials%20%26%20Cracking.md) | Hash cracking, brute-force, credential spraying, wordlist strategies |
 | 4 | [Getting & Stabilising a Shell](./(4)%20Getting%20%26%20Stabilising%20a%20Shell.md) | Reverse shells, bind shells, TTY stabilisation, shell upgrades |
-| 5 | [Privilege Escalation](./(5)%20Privilege%20Escalation.md) | Linux/Windows privesc techniques, SUID, sudo misconfigs, cron jobs, tokens |
-| 6 | [Finding Flags](./(6)%20Finding%20Flags.md) | Where to look, common flag locations, search commands |
+| 5 | [Binary Exploitation (RE)](./(5)%20Binary%20Exploitation%20(RE).md) | simple reverse engineering techniques |
+| 6 | [Privilege Escalation](./(6)%20Privilege%20Escalation.md) | Linux/Windows privesc techniques, SUID, sudo misconfigs, cron jobs, tokens |
+| 7 | [Finding Flags](./(7)%20Finding%20Flags.md) | Where to look, common flag locations, search commands |
+
+This solves: ~85–90% Easy Rooms, ~60–70% Medium Rooms, ~30–40% Hard Rooms
 
 ---
 
