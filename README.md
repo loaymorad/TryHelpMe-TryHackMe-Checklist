@@ -32,7 +32,7 @@ The checklist is divided into 6 phases that mirror a real penetration testing wo
 | 6 | [Privilege Escalation](./(6)%20Privilege%20Escalation.md) | Linux/Windows privesc techniques, SUID, sudo misconfigs, cron jobs, tokens |
 | 7 | [Finding Flags](./(7)%20Finding%20Flags.md) | Where to look, common flag locations, search commands |
 
-This solves: ~85–90% Easy Rooms, ~60–70% Medium Rooms, ~30–40% Hard Rooms
+This solves: ~85–90% Easy Rooms, ~60–70% Medium Rooms & ~30–40% Hard Rooms
 
 ---
 
